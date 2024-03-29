@@ -1,0 +1,45 @@
+
+
+pip3 install --upgrade pip setuptools wheel
+
+
+pip3 install numpy pandas tqdm python-dotenv natsort matplotlib scikit-learn pytz seaborn pyarrow shap joblib optuna
+
+## -- 
+pip3 install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cpu
+
+
+
+################################  pip3 install tensorflow-macos tensorflow-metal
+
+
+## ---
+
+pip3 install ipywidgets
+jupyter nbextension enable --py widgetsnbextension
+
+## ----- Finished ------ all following notes are for future reference 
+
+
+
+
+## lightgbm -- install like this if we need it later 
+
+brew install cmake
+brew install libomp
+brew install gcc
+
+git clone --recursive https://github.com/microsoft/LightGBM
+cd LightGBM
+
+git checkout v4.1.0.99 # I added this not sure if needed
+
+
+
+sh ./build-python.sh bdist_wheel
+
+
+cd dist
+pip install lightgbm-4.1.0.99-py3-none-macosx_10_16_x86_64.whl
+
+
