@@ -1,4 +1,43 @@
+python3 -m venv .venv
+source .venv/bin/activate
 
+pip install --upgrade pip
+pip install --upgrade setuptools
+
+
+
+
+pip install -e . 
+
+
+pip install ipykernel
+
+pip install notebook
+
+## restart terminal just in case
+
+ipython kernel install --user --name=methyl_chla
+
+
+
+## This installs the venv onto jupyter, then you can type 
+jupyter notebook
+
+
+
+
+#### some packages to install 
+
+
+pip3 install --upgrade pip setuptools wheel
+
+pip3 install numpy pandas tqdm python-dotenv natsort matplotlib scikit-learn pytz seaborn pyarrow shap joblib optuna
+
+pip3 install ipywidgets
+jupyter nbextension enable --py widgetsnbextension
+
+
+_____________________________________________
 ____Pip install current package to reflect edits immediately _____
 
 Navigate to your package and use…
@@ -15,9 +54,7 @@ sudo apt-get update
 python3 -m venv .venv
 source .venv/bin/activate
 
-
 pip install --upgrade pip
-
 pip install --upgrade setuptools
 
 
