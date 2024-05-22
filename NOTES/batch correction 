@@ -1,6 +1,0 @@
-batch correction depends on sample type frozen vs not etc. 
-
-this paramater should be calcualted based on training data but will vary accross machine and lab that uses it. 
-
-if inferance is taking place on data that was collected by machine X and at lab Y the these values should be calculated 
-based on this specific setup. otherwise we may get great results for our data but others will find the reults biased or poor 
