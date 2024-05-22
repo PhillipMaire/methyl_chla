@@ -90,7 +90,7 @@ docs/_build/
 .pybuilder/
 target/
 
-# Jupyter Notebook
+# Jupyter Notebook checkpoints
 .ipynb_checkpoints
 
 # IPython
@@ -172,3 +172,4 @@ cython_debug/
 .DS_Store
 .vscode/launch.json
 notebooks_testing/
+getting_started
