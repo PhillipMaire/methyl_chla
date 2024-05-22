@@ -33,7 +33,6 @@ class OptunaHyperparameterTuning():
         self.each_type_model_type_strings = ['KNN', 'RF']
 
         self.optuna_model_info = {}
-
         self.ALL_global_keys = training_data_class.target_dict.keys()
 
     def _get_important_information(self):

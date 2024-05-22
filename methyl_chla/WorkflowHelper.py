@@ -95,6 +95,7 @@ def run_full_pipeline(    df,
                           feature_keys,
                           hierarchy_keys, 
                           hierarchy_levels, 
+                          index_key_name,
                           save_name,
                           model_name_string = '',
                           select_top_n_features_IQR=None, 
@@ -123,7 +124,7 @@ def run_full_pipeline(    df,
     """   
 
     print('Running: FeatureSelection')
-    fclass = FeatureSelection(feature_keys, hierarchy_keys, hierarchy_levels, select_top_n_features=select_top_n_features_IQR)
+    fclass = FeatureSelection(feature_keys, hierarchy_keys, hierarchy_levels, index_key_name=index_key_name, select_top_n_features=select_top_n_features_IQR)
     fclass.make_feature_selection_dict(df)
     pipeline_data = fclass.create_pipeline_data()
 

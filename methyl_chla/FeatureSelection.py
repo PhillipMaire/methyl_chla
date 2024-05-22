@@ -19,7 +19,7 @@ NOT overwrite data
 
 
 class FeatureSelection():
-    def __init__(self, feature_keys, hierarchy_keys, hierarchy_levels=None, select_top_n_features=30000):
+    def __init__(self, feature_keys, hierarchy_keys, hierarchy_levels=None, index_key_name = None, select_top_n_features=30000):
 
         """
         A class for performing feature selection based on a hierarchical structure of features.
@@ -39,6 +39,8 @@ class FeatureSelection():
         - feature_keys (List[str]): See parameters.
         - select_top_n_features (int): See parameters.
         """
+
+
         if isinstance(hierarchy_keys, str):
             hierarchy_keys = [hierarchy_keys]  # Convert to list if string is passed in 
         if len(hierarchy_keys) == 1:
@@ -67,6 +69,8 @@ class FeatureSelection():
         
         self.feature_keys = feature_keys
         self.select_top_n_features = select_top_n_features
+        self.index_key_name = index_key_name
+
     def get_hierarchical_every_outcome_dict(self): 
         #$%^& i think i can just take the unique of each of the DF columns of target LOL --
         # but i guess this does standardize it to an existing order that we have.
@@ -100,6 +104,7 @@ class FeatureSelection():
             # these apply to the entire dataset
             'ALL_sample_index': self.ALL_sample_index, # bool of all true with the matching unique ID index
             'ALL_feature_keys': self.feature_keys, #list of all keys to the feature (names of the feature columns)
+            'index_key_name': self.index_key_name, # name of the index in the dataframe, unique IDs 
             'ALL_global_keys': self.ALL_global_keys, # keys to each category of the hierarchy
 
             # these are broken up by each sub model (ALL_global_keys are all the keys to these) 
@@ -199,6 +204,10 @@ class FeatureSelection():
         """
 
         assert isinstance(df, pd.DataFrame), "df must be a pandas DataFrame"
+
+        # REVIEW - test to make sure this works with None, working index and not working index 
+        if self.index_key_name is not None and self.index_key_name not in df.index.names:
+            raise ValueError(f"Index key name {self.index_key_name} not found in DataFrame index names. Ensure you set the dataframe index to match the 'index_key_name' input variable")
 
         # special case where we use all features for Full model
         IQR, top_n_features_index, selected_rows_index = self._select_features(df, None, None) # None indicated  this special case for Full model

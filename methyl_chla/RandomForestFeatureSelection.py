@@ -38,7 +38,7 @@ class RandomForestFeatureSelection():
         """
         return {
             'RF_feature_importance_dict': self.RF_feature_importance_dict,
-            'RF_feature_selection_model_dict': self.RF_feature_selection_model_dict,
+            # 'RF_feature_selection_model_dict': self.RF_feature_selection_model_dict, # RF models, dont need to keep these 
             'RF_selected_feature_dict': self.RF_selected_features
         }
         
