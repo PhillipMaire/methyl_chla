@@ -65,6 +65,7 @@ def create_model_directory(save_dir, model_name_string, prepend_datetime=True):
     }
 
     dir_paths['pipeline_data'] = os.path.join(dir_paths['model_dir'], dir_paths['model_name_string'] + '_pipeline_data.pkl')
+    dir_paths['selected_features_csv_file'] = os.path.join(dir_paths['model_dir'], dir_paths['model_name_string'] + '_selected_features.csv')
 
 
     if os.path.exists(dir_paths['pipeline_data']):
@@ -95,9 +96,9 @@ def run_full_pipeline(    df,
                           feature_keys,
                           hierarchy_keys, 
                           hierarchy_levels, 
-                          index_key_name,
                           save_name,
-                          model_name_string = '',
+                          index_key_name = None,
+                        #   model_name_string = '',
                           select_top_n_features_IQR=None, 
                           select_top_n_features_RF=None,
                           n_optuna_trials=50,

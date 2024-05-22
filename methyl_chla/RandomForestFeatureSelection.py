@@ -25,6 +25,7 @@ class RandomForestFeatureSelection():
         self.RF_feature_selection_model_dict = {}
         self.RF_feature_importance_dict = {}
         self.RF_selected_features = {}
+        self.RF_selected_features_importance = {}
 
         self.pipeline_data = pipeline_data
 
@@ -39,7 +40,8 @@ class RandomForestFeatureSelection():
         return {
             'RF_feature_importance_dict': self.RF_feature_importance_dict,
             # 'RF_feature_selection_model_dict': self.RF_feature_selection_model_dict, # RF models, dont need to keep these 
-            'RF_selected_feature_dict': self.RF_selected_features
+            'RF_selected_feature_dict': self.RF_selected_features,
+            'RF_selected_features_importance_dict': self.RF_selected_features_importance
         }
         
     def update_pipeline_data(self, pipeline_data):
@@ -103,6 +105,8 @@ class RandomForestFeatureSelection():
             selected_features_idx = np.argsort(rf.feature_importances_)[::-1][:self.select_top_n_features] # [::-1] to flip so largest to smallest
             # save them to a dictionary for later
             self.RF_selected_features[global_key] = [feature_col_idx[f_idx] for f_idx in selected_features_idx]
+
+            self.RF_selected_features_importance[global_key] = [rf.feature_importances_[f_idx] for f_idx in selected_features_idx]
             
 
 # RFFS = RandomForestFeatureSelection(fclass, select_top_n_features=3)
